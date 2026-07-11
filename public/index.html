@@ -108,8 +108,8 @@
   </div>
 
   <script>
-    // API URL - ????? Render URL ???
-    const API_URL = 'https://sr_group_server.onrender.com';
+    // API URL - ???? ????? (??? ???????)
+    const API_URL = '';
 
     async function loadDashboard() {
       const content = document.getElementById('dashboardContent');
@@ -117,10 +117,12 @@
       try {
         // ?????????? ???? ???
         const dashboardRes = await fetch(`${API_URL}/api/dashboard`);
+        if (!dashboardRes.ok) throw new Error('Dashboard API failed');
         const dashboardData = await dashboardRes.json();
         
         // Skills ???? ???
         const skillsRes = await fetch(`${API_URL}/api/skills`);
+        if (!skillsRes.ok) throw new Error('Skills API failed');
         const skillsData = await skillsRes.json();
 
         // HTML ???? ???
